@@ -1,0 +1,12 @@
+{
+  "name": "orbita",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tu oficina de empleados de IA: cinco departamentos dirigidos por empresarios famosos, que trabajan en Claude Code y se ven en una oficina en pixel art.",
+  "type": "module",
+  "scripts": {
+    "start": "node app/server.mjs",
+    "ejemplo": "node app/scripts/sembrar-ejemplo.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

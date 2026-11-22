@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Órbita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="galaxia" aria-hidden="true"></canvas>
+  <main class="escena" id="escena">
+    <div id="mundo">
+    <canvas id="fondo" aria-hidden="true"></canvas>
+
+    <button class="nucleo" id="nucleo" aria-label="Tu negocio: ver todos los entregables">
+      <canvas id="anillos" width="96" height="96" aria-hidden="true"></canvas>
+      <span class="nucleo-logo" id="nucleo-logo"></span>
+      <span class="nucleo-nombre"><b id="negocio">Tu negocio</b><small id="nucleo-sub">Todo llega aquí</small></span>
+    </button>
+
+    <div id="paquetes" aria-hidden="true"></div>
+    <div id="oficinas"></div>
+    </div>
+
+    <header class="hud">
+      <div class="hud-marca"><span class="hud-logo" id="hud-logo">T</span><div><b id="hud-negocio">Tu negocio</b><small>Tu oficina · <span id="hud-equipo">5 empleados</span></small></div></div>
+      <div class="hud-chips">
+        <span class="chip" id="chip-trabajando"></span>
+        <span class="chip plata" id="chip-plata"></span>
+        <span class="chip" id="chip-turnos" hidden></span>
+        <span class="chip" id="chip-fecha"></span>
+      </div>
+    </header>
+
+    <button class="mision" id="mision"></button>
+    <button class="logro" id="logro" hidden></button>
+
+    <nav class="barra-nav" id="barra-nav">
+      <button data-ir="inicio" class="sel"><i class="ico ico-inicio"></i>Inicio</button>
+      <button data-ir="departamentos"><i class="ico ico-dep"></i>Departamentos</button>
+      <button data-ir="entregables"><i class="ico ico-ent"></i>Entregables</button>
+      <button data-ir="actividad"><i class="ico ico-act"></i>Actividad</button>
+      <button data-ir="config"><i class="ico ico-conf"></i>Configuración</button>
+    </nav>
+  </main>
+
+  <div id="dialogo" hidden>
+    <section class="dlg">
+      <div id="dlg-retrato"></div>
+      <div class="dlg-cuerpo">
+        <p class="dlg-quien"><b id="dlg-nombre"></b> <span id="dlg-cargo"></span></p>
+        <p id="dlg-tu" hidden></p>
+        <p id="dlg-texto"></p>
+        <p id="dlg-estado" hidden></p>
+        <div id="dlg-opciones"></div>
+        <form id="dlg-consulta" hidden>
+          <textarea id="dlg-msg" rows="2" maxlength="2000" placeholder="Cuéntale tu idea o tu duda"></textarea>
+          <div class="dlg-acciones"><button type="submit" id="dlg-enviar">Enviar</button><button type="button" id="dlg-salir">Terminar</button></div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div id="panel" hidden>
+    <div class="pnl">
+      <button class="pnl-cerrar" aria-label="Cerrar">×</button>
+      <div id="pnl-cabeza"></div>
+      <nav id="pnl-tabs"></nav>
+      <div id="pnl-cuerpo"></div>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

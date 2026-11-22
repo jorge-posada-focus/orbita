@@ -1,0 +1,8 @@
+# Lo de cada persona: su negocio y lo que trabajan sus empleados
+/negocio/
+/oficina/
+
+.env
+node_modules/
+.DS_Store
+Thumbs.db

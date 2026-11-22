@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node app/scripts/oficina.mjs:*)",
+      "Edit(/oficina/**)",
+      "Write(/oficina/**)",
+      "Edit(/negocio/**)",
+      "Write(/negocio/**)",
+      "WebSearch",
+      "WebFetch"
+    ]
+  }
+}
