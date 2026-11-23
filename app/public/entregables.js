@@ -109,9 +109,10 @@ const VISTAS = {
       </li>`).join("")}</ul>`,
 
   finanzas: (r) => {
+    const cambio = (a, b) => (b ? `${a >= b ? "+" : ""}${Math.round((a / b - 1) * 100)} %` : a ? "nuevo esta semana" : "sin cambio");
     const { semanas, productos, alertas } = r.datos;
     const ult = semanas.at(-1), ant = semanas.at(-2) || ult;
-    const max = Math.max(...semanas.map((s) => s.ventas));
+    const max = Math.max(1, ...semanas.map((s) => Math.max(s.ventas, s.gastos)));
     const H = 160, bw = 18, gap = 22;
     const barras = semanas.map((s, i) => {
       const x = 30 + i * (bw * 2 + gap);
@@ -120,9 +121,9 @@ const VISTAS = {
     }).join("");
     const ancho = 30 + semanas.length * (bw * 2 + gap);
     return `<div class="kpis">
-        <div class="kpi"><small>Ventas</small><b>${pesos(ult.ventas)}</b><span class="sube">+${Math.round((ult.ventas / ant.ventas - 1) * 100)} %</span></div>
-        <div class="kpi"><small>Gastos</small><b>${pesos(ult.gastos)}</b><span class="baja">+${Math.round((ult.gastos / ant.gastos - 1) * 100)} %</span></div>
-        <div class="kpi"><small>Quedó</small><b>${pesos(ult.ventas - ult.gastos)}</b><span>${((1 - ult.gastos / ult.ventas) * 100).toFixed(1)} % de margen</span></div>
+        <div class="kpi"><small>Ventas</small><b>${pesos(ult.ventas)}</b><span class="sube">${cambio(ult.ventas, ant.ventas)}</span></div>
+        <div class="kpi"><small>Gastos</small><b>${pesos(ult.gastos)}</b><span class="baja">${cambio(ult.gastos, ant.gastos)}</span></div>
+        <div class="kpi"><small>Quedó</small><b>${pesos(ult.ventas - ult.gastos)}</b><span>${ult.ventas ? `${((1 - ult.gastos / ult.ventas) * 100).toFixed(1)} % de margen` : "sin ventas todavía"}</span></div>
       </div>
       <h3>Ventas y gastos, últimas 8 semanas</h3>
       <div class="grafica"><svg viewBox="0 0 ${ancho} ${H + 34}" shape-rendering="crispEdges">${barras}</svg>
@@ -156,7 +157,7 @@ export function mini(r) {
     case "prospectos": return `<div class="mini mini-filas">${d.slice(0, 5).map((p) => `<span><i>${esc(p.nombre)}</i><b class="est-${p.estado.replace(" ", "-")}"></b></span>`).join("")}</div>`;
     case "pipeline": return `<div class="mini mini-kanban">${d.map((c) => `<span>${c.items.map((it) => `<b class="${it.dias > 3 ? "frio" : ""}"></b>`).join("")}</span>`).join("")}</div>`;
     case "checklist": return `<div class="mini mini-check">${d.slice(0, 4).map((x) => `<span class="${x.estado.replace(" ", "-")}"><b></b><i>${esc(x.texto)}</i></span>`).join("")}</div>`;
-    case "finanzas": { const max = Math.max(...d.semanas.map((s) => s.ventas)); return `<div class="mini mini-fin">${d.semanas.map((s) => `<span><b style="height:${(s.ventas / max) * 100}%"></b><b class="g" style="height:${(s.gastos / max) * 100}%"></b></span>`).join("")}</div>`; }
+    case "finanzas": { const max = Math.max(1, ...d.semanas.map((s) => Math.max(s.ventas, s.gastos))); return `<div class="mini mini-fin">${d.semanas.map((s) => `<span><b style="height:${(s.ventas / max) * 100}%"></b><b class="g" style="height:${(s.gastos / max) * 100}%"></b></span>`).join("")}</div>`; }
     default: return `<div class="mini mini-doc"><b></b>${"<span></span>".repeat(6)}</div>`;
   }
 }

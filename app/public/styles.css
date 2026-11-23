@@ -176,6 +176,8 @@ body.arrastrando .pod { pointer-events: none; }
 .mision { left: 1.2cqi; }
 .logro { right: 1.2cqi; border-left: 0.35cqi solid #6fe08a; }
 .mision[hidden], .logro[hidden] { display: none; }
+.firma { position: absolute; right: 1.2cqi; bottom: 0.3cqi; z-index: 5; font-size: 0.72cqi; color: var(--apagado); text-decoration: none; opacity: 0.85; }
+.firma:hover { color: var(--texto-claro); opacity: 1; }
 .mision:hover, .logro:hover { border-color: rgba(160, 190, 255, 0.6); }
 .mis-ico, .logro-ico { width: 2.4cqi; height: 2.4cqi; flex: none; }
 .mis-ico { border-radius: 50%; box-shadow: inset 0 0 0 0.25cqi #cfd6ff, inset 0 0 0 0.55cqi transparent, inset 0 0 0 0.8cqi #cfd6ff; background: radial-gradient(circle, #cfd6ff 0 18%, transparent 20%); }

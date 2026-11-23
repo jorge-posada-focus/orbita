@@ -126,7 +126,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, "127.0.0.1", () => {
-  console.log(`Oficina abierta en http://localhost:${PORT}`);
+  console.log(`Oficina abierta en http://localhost:${PORT}  ·  Órbita, hecha por @notjorgpda`);
   turnos.arrancar();
   const t = turnos.estado();
   console.log(t.activos

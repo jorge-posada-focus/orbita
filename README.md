@@ -75,6 +75,9 @@ Cada empleado es una simulación hecha con la obra pública de esa persona: vide
 
 ## Créditos
 
+Órbita la hizo Jorge Posada ([@notjorgpda](https://www.instagram.com/notjorgpda/) en Instagram). Si la usas o la mejoras, cuéntame.
+
+
 Los cerebros de Jeff Bezos, Alex Hormozi, Gino Wickman y Warren Buffett vienen de [Roast Room](https://github.com/nateherkai/roast-room), de AI Automation Society, con licencia MIT. El de Iman Gadzhi se armó para este proyecto con el mismo formato.
 
 ## Licencia
